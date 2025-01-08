@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Slot, SplashScreen, Stack } from 'expo-router';
 import './globals.css'
 import {useFonts} from "expo-font"
+import GlobalProvider from '@/lib/global-provider';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 
@@ -23,7 +24,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   if(!fontsLoaded) return null;
 
-  return <Stack screenOptions={{headerShown:false }} />
+  return (
+    <GlobalProvider>
+      <Stack screenOptions={{headerShown:false }} />
+    </GlobalProvider>
+  )
 
 
 }
